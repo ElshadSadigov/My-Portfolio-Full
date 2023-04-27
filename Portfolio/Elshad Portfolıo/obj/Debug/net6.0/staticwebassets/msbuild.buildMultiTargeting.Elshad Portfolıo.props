@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Elshad Portfolıo.props" />
+</Project>

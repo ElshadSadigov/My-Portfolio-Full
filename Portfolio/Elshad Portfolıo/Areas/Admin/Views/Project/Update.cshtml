@@ -1,0 +1,61 @@
+﻿@model Project
+@{
+    ViewData["Title"] = "Update";
+}
+<div class="container">
+
+<h1>Update a Project</h1>
+
+</div>
+
+<form method="post" asp-action="update" enctype="multipart/form-data">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-3">
+				<label asp-for="Title" class="form-label">Title</label>
+				<input asp-for="Title" class="form-control">
+				<span class="text-danger" asp-validation-for="Title"></span>
+			</div>
+			<div class="col-md-3">
+				<label asp-for="GithubLink" class="form-label">Github Link</label>
+				<input asp-for="GithubLink" class="form-control">
+				<span class="text-danger" asp-validation-for="GithubLink"></span>
+			</div>
+			<div class="col-md-3">
+				<label asp-for="ProjectLink" class="form-label">Project Link </label>
+				<input asp-for="ProjectLink" class="form-control">
+				<span class="text-danger" asp-validation-for="ProjectLink"></span>
+			</div>
+			<div class="col-md-3">
+				<label asp-for="order" class="form-label">Order</label>
+				<input asp-for="order" class="form-control">
+				<span class="text-danger" asp-validation-for="order"></span>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-12" style="margin-top:10px">
+				<label asp-for="Description" class="form-label">Description</label>
+				<textarea asp-for="Description" cols="30" rows="10" class="form-control">Description</textarea>
+				<span class="text-danger" asp-validation-for="Description"></span>
+			</div>
+		</div>
+		<diw class="row">
+			<div class="col-md-12">
+				<label asp-for="ImageFile" class="form-label">Image</label>
+				<input asp-for="ImageFile" class="form-control">
+				<span class="text-danger" asp-validation-for="ImageFile"></span>
+			</div>
+		</diw>
+
+		<div class="d-flex justify-content-center " style="margin-top:10px">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+
+	</div>
+
+
+</form>
+
+

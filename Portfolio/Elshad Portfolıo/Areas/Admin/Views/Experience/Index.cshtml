@@ -1,0 +1,136 @@
+﻿@model List<Experience>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<div class="container" >  
+
+    <div>
+        <!-- ==================================================================================== -->
+        <!-- ==================================================================================== -->
+        <!-- ==================================================================================== -->
+
+        <div class="mx-3">
+
+            <div style="display:flex; justify-content:space-between; align-items:center">
+
+                <div>
+                    <h1>Project</h1>
+                </div>
+
+
+                <div>
+                    <a asp-action="create" asp-controller="Experience">
+                        <button class=" btn btn-info">
+                            <i class="bi bi-pencil-square"></i>
+                            Create
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th scope="col">#</th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Company Name</th>
+                            <th scope="col">Company Link</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Access date</th>
+                            <th scope="col">Release date</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            count++;
+
+                            <tr>
+                                <td>@count</td>
+								<td class="text-danger"><strong> @item.Order</strong></td>
+                                <td>
+                                    <img style="width:100px" src="~/uploads/experience/@item.Images" />
+                                </td>
+
+                                <td>
+                                    @item.CompanyName
+                                    </td>
+
+                                <td>
+                                    <div style="margin:auto">
+
+
+                                    <a href="@item.CompanyLink"  >
+
+                                        <i class="fas fa-link"></i>
+                                        
+                                    </a>
+
+                                    </div>
+
+
+                                    
+                                </td>
+
+
+                                <td>
+
+
+                                        @item.Position
+                                </td>
+                                     <td class="text-warning">
+										@item.Accessdate.ToString("dd MMMM yyyy ")
+                                        </td>
+
+                                     <td class="text-info">
+                                        
+										@item.Releasedate.ToString("dd MMMM yyyy ")
+                                         </td>
+                            
+
+                                <td>
+                                    <div>
+                                        <div>
+                                            <a asp-action="update" asp-controller="Experience" asp-route-id="@item.Id">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-pencil-square"></i>
+
+                                                </button>
+                                            </a>
+                                            <a class="mx-1" asp-action="delete" asp-controller="Experience" asp-route-id="@item.Id">
+                                                <button class="btn btn-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- ==================================================================================== -->
+        <!-- ==================================================================================== -->
+        <!-- ==================================================================================== -->
+
+
+
+
+
+    </div>
+
+</div>

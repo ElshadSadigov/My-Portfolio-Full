@@ -1,0 +1,35 @@
+﻿@model Elshad_Portfolıo.Models.About
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container">
+
+
+    <h1>Update</h1>
+
+<h4>About</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Row" class="control-label"></label>
+                    <textarea asp-for="Row" cols="30" rows="10" class="form-control text-info"> </textarea>
+                <span asp-validation-for="Row" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</div>
+

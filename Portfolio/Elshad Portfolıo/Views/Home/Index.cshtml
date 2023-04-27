@@ -1,0 +1,294 @@
+﻿@using Elshad_Portfolıo.ViewModels;
+
+@model IndexViewModel
+
+
+    <div class="container">
+        <!-- Header Part -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-img">
+                    <img src="~/assets/Imgs/pngwing.com (2).png" alt="Logo">
+                </div>
+                <div class="logo-text">
+                    <span>S</span>
+                    <span>a</span>
+                    <span>d</span>
+                    <span>i</span>
+                    <span>g</span>
+                    <span>o</span>
+                    <span>v</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><span>01.</span><a href="#about" class="header-a">About</a></li>
+                    <li>
+                        <span>02.</span><a href="#skills" class="header-a">Skills</a>
+                    </li>
+                    <li>
+                        <span>03.</span><a href="#experience" class="header-a">experience</a>
+                    </li>
+                    <li>
+                        <span>04.</span><a href="#projects" class="header-a">Projects</a>
+                    </li>
+                    <li>
+                        <span>05.</span><a href="#contact" class="header-a">Contact</a>
+                    </li>
+                </ul>
+                <div class="resume">
+                    @foreach (var item in Model.Cv)
+                {
+                    <a href="~/uploads/Cv/@item.CV" target="_blank">Resume</a>
+                }
+                </div>
+            </nav>
+            <div class="res-btns">
+                <div class="btn-1"></div>
+                <div class="btn-2"></div>
+                <div class="btn-3"></div>
+            </div>
+        </header>
+        <!-- Header Part -->
+        <!-- Sosial Media Part -->
+        <div class="sosial-media sM-left">
+            <div class="sM-left-icons">
+                <a href="@Model.Settings.FirstOrDefault(x=>x.Key=="GitHub")?.Value" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="@Model.Settings.FirstOrDefault(x=>x.Key=="Linkedin")?.Value" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            <a href="@Model.Settings.FirstOrDefault(x=>x.Key=="Instagram")?.Value" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            <a href="@Model.Settings.FirstOrDefault(x=>x.Key=="Fecebook")?.Value" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
+            <div class="sM-line"></div>
+        </div>
+        <div class="sosial-media sM-right">
+            <div class="sM-right-gmail">
+            <a href="mailto:@Model.Settings.FirstOrDefault(x=>x.Key=="Email")?.Value" target="_blank">sv.elshad@gmail.com</a>
+            </div>
+            <div class="sM-line"></div>
+        </div>
+        <!-- Sosial Media Part -->
+        <!-- Opening Part -->
+        <section class="opening">
+            <div class="opening-img">
+                @foreach (var item in Model.Images)
+            {
+                <img src="~/uploads/Image/@item.Images" alt="" width="120px" />
+            }
+            </div>
+            <div class="opening-info">
+                <p>Hello, <span>I am</span></p>
+                <div class="opening-animation">
+                    <div class="oA-first">
+                        <div>Elshad Sadigov</div>
+                    </div>
+                    <div class="oA-second">
+                        <div>Front-End Developer</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Opening Part -->
+        <!-- About Me Part -->
+        <section class="aboutMe section" id="about">
+            <div class="info-title">
+                <span>01.</span>
+                <h3>About Me</h3>
+                <div class="infoLine"></div>
+            </div>
+            <div class="aboutInfo">
+                <div class="aboutText">
+                    @foreach (var item in Model.rows)
+                {
+                    <p>
+                        @item.Row
+                    </p>
+                    
+                }    
+                </div>
+                <div class="aboutImg">
+                    @foreach (var item in Model.aboutImages)
+                {
+                    
+                    <img src="~/uploads/About/@item.Images" alt="" width="120px" />
+                }
+
+                </div>
+            </div>
+        </section>
+        <!-- About Me Part -->
+        <!-- Skills Part -->
+        <section class="skills section" id="skills">
+            <div class="info-title">
+                <span>02.</span>
+                <h3>Skills</h3>
+                <div class="infoLine"></div>
+            </div>
+            <div class="skillsInfo">
+                <div class="softSkills">
+                    <span>Soft Skills</span>
+                    <ul>
+                        @foreach (var item in Model.SoftSkills)
+                    {
+                        <li><i class="fa-regular fa-circle-check"></i>@item.skill</li>
+                    }
+                    </ul>
+                </div>
+
+                <div class="hardSkills">
+                    <span>Hard Skills</span>
+                    <ul>
+                        @foreach (var item in Model.FrontEnd)
+                    {
+                        <li><i class="fa-regular fa-circle-check"></i>@item.skill</li>
+                    }
+                    @foreach (var item in Model.BackEnd)
+                    {
+                        <li><i class="fa-regular fa-circle-check"></i>@item.skill</li>
+                    }
+                    </ul>
+                </div>
+
+
+            </div>
+        </section>
+        <!-- Skills Part -->
+        <!-- Experience Part -->
+        <section class="experience section" id="experience">
+            <div class="info-title">
+                <span>03.</span>
+                <h3>Experience</h3>
+                <div class="infoLine"></div>
+            </div>
+            @foreach (var item in Model.Experiences)
+        {
+            <div class="experienceInfo">
+                <div class="experienceImg">
+                    <img src="~/uploads/Experience/@item.Images" alt="">
+                </div>
+                <div class="experienceText">
+                    <a href="@item.CompanyLink" target="_blank">@item.CompanyName</a>
+                    <span>Front-End Developer</span>
+                    <p>@item.Accessdate.ToString(" MM.dd.yyyy") <i class="fa-solid fa-circle-right"></i>@item.Releasedate.ToString(" MM.dd.yyyy") </p>
+                </div>
+            </div>
+            
+        }
+        </section> 
+        <!-- Experience Part -->
+        <!-- Projects Part -->
+        <section class="projects section" id="projects">
+            <div class="info-title">
+                <span>04.</span>
+                <h3>Projects</h3>
+                <div class="infoLine"></div>
+            </div>
+            <div class="projectsInfo">
+                @foreach (var item in Model.projects)
+            {
+                if (item.Id%2!=0)
+                {
+                <div class="proje mPayClone">
+                    <div class="proje-img">
+                        <img src="~/uploads/Project/@item.Images" alt="" />
+                    </div>
+                    <div class="proje-info projeLeft-info">
+                        <span>@item.Title</span>
+                        <div class="proje-text projeLeft-text">
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                            <div class="proje-link">
+                                @if (item.GithubLink != null)
+                                {
+                                    <a href="@item.GithubLink" target="_blank">
+                                        <i class="fa-brands fa-github"></i>
+                                    </a>
+                                }
+                                @if (item.ProjectLink != null)
+                                {
+
+                                    <a href="@item.ProjectLink"  ><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                }
+                            </div>
+                    </div>
+                </div>
+                }
+                else
+                {
+                <div class="proje asanPayClone">
+                    <div class="asanPay-info proje-info">
+                        <span>@item.Title</span>
+                        <div class="asanPay-text proje-text">
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                            <div class="proje-link">
+                                @if (item.GithubLink!=null)
+                                {
+                                <a href="@item.GithubLink" target="_blank">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                                }
+                                @if (item.ProjectLink!=null)
+                                {
+                                    
+                                <a href="@item.ProjectLink"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                }
+                            </div>
+                    </div>
+                    <div class="asanPay-img proje-img">
+                        <img src="~/uploads/Project/@item.Images" alt="" />
+                    </div>
+                </div>
+                }
+            }
+            </div>
+            <div class="moreProje">
+                <div class="moreProje-title">
+                    <p>You can click the button to see more projects:</p>
+                </div>
+            <a href="@Model.Settings.FirstOrDefault(x=>x.Key=="GitHub")?.Value" target="_blank">More...!</a>
+            </div>
+        </section>
+        <!-- Projects Part -->
+        <!-- Contact Part -->
+        <section class="contact section" id="contact">
+            <div class="info-title">
+                <span>05.</span>
+                <h3>Contact</h3>
+                <div class="infoLine"></div>
+            </div>
+            <div class="contactInfo">
+                <span>Get In Touch</span>
+                <div class="contact-text">
+                    <p>
+                        I am currently looking for new opportunities and my inbox is
+                        always open. Whether you have a question or just want to say hi,
+                        I'll do my best to get back to you!
+                    </p>
+                </div>
+                <button class="contact-btn">Contact</button>
+                <div class="contactMethod">
+                    <div class="exit-icon">
+                        <i class="fa-solid fa-xmark exitIcon"></i>
+                    </div>
+                    <div class="methodText">
+                        <p>Please select a contact method:</p>
+                        <div class="methodBtns">
+                        <a href="https://api.whatsapp.com/send?phone=994 @Model.Settings.FirstOrDefault(x=>x.Key=="Phone Number")?.Value &text=Hello" @*onclick="sendMessage()"*@><i class="fa-brands fa-whatsapp"></i>Whatsapp</a>
+                        <a href="mailto:@Model.Settings.FirstOrDefault(x=>x.Key=="Email")?.Value" target="_blank"><i class="fa-solid fa-at"></i>Gmail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Part -->
+    </div>

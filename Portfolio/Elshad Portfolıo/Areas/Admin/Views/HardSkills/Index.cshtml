@@ -1,0 +1,99 @@
+﻿@model List<HardSkills>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+
+<div>
+    <!-- ==================================================================================== -->
+    <!-- ==================================================================================== -->
+    <!-- ==================================================================================== -->
+
+    <div class="mx-3">
+
+        <div style="display:flex; justify-content:space-between; align-items:center">
+
+            <div>
+                <h1><strong>Skills</strong></h1>
+            </div>
+            <div>
+
+                <a asp-action="create" asp-controller="hardskills">
+                <button class=" btn btn-info">
+                <i class="bi bi-pencil-square"></i>
+                Create
+                </button>
+                </a>
+            </div>
+
+        </div>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th scope="col">#</th>
+                        <th scope="col">Skills</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+
+                            <tr>
+
+
+                                <td >@count</td>
+                                <td class="text-info">@item.skill</td>
+                            @if (item?.Type?.Type == "Front End")
+                            {
+                                <td class="text-danger">@item?.Type?.Type</td>
+                            }
+                            else
+                            {
+                                <td class="text-warning">@item?.Type?.Type</td>
+                            }
+                                <td>
+                                    <div>
+                                        <div>
+                                            <a asp-action="update" asp-controller="hardskills" asp-route-id="@item.Id">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                            </a>
+
+                                        <a class="mx-1" asp-action="delete" asp-controller="hardskills" asp-route-id="@item.Id">
+                                        <button class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                        </button>
+                                        </a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- ==================================================================================== -->
+    <!-- ==================================================================================== -->
+    <!-- ==================================================================================== -->
+
+
+
+
+
+</div>
